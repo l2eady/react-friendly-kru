@@ -2,6 +2,7 @@ import { useState } from "react"
 import MainLayout from "../../layouts/MainLayout"
 import { useHistory } from "react-router-dom";
 import axios from 'axios'
+import setUserToken from '../../utils/token'
 
 const Login = () => {
     const [email, setEmail] = useState('')
@@ -16,20 +17,17 @@ const Login = () => {
             password: password,
         }
 
-        const headers = {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
-        }
 
         axios
-            .post("https://us-central1-friendly-kru.cloudfunctions.net/api/login", reqBody, {
-                headers: headers,
-            })
+            .post("https://us-central1-friendly-kru.cloudfunctions.net/api/login", reqBody)
             .then((response) => {
                 console.log(response)
-                localStorage.setItem("AuthToken", `Bearer ${response.data.token}`);
+
+                // save user token to local storage
+                setUserToken(response.data.token)
+                
+
                 setLoading(false);
-                // history.push("/");
             })
             .catch((err) => {
                 console.log(err)
