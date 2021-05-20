@@ -1,8 +1,13 @@
+import UserLayout from "../../layouts/UserLayout"
 const Profile = () => {
     return (
-        <div>
-            <h1>User Profile</h1>
-        </div>
+        <UserLayout>
+            <div>
+                <h1>User Profile</h1>
+            </div>
+        </UserLayout>
+
+
     )
 }
 
