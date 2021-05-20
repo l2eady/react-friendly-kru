@@ -5,7 +5,7 @@ const UserLayout = ({children}) => {
     return (
         <div>
             <UserBar/>
-            <div className="container mx-auto my-4">
+            <div className="container mx-auto my-4 bg-gray-100">
                 {children}
             </div>
         </div>
